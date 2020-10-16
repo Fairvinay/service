@@ -1,0 +1,36 @@
+[
+    {
+        "employee": {
+            "firstname": "Lokesh",
+            "lastname": "Swant",
+            "age": "24",
+            "country": "India"
+           
+        }
+    },
+    {
+        "employee": {
+            "firstname": "Brian",
+            "lastname": "Deshat",
+            "age": "34",
+            "country": "Nepal"
+        }
+    },
+    {
+        "employee": {
+            "firstname": "Lokesh",
+            "lastname": "Nagar",
+            "age": "12",
+            "country": "Combodia"
+           
+        }
+    },
+    {
+        "employee": {
+            "firstname": "PAssri",
+            "lastname": "Paravt",
+            "age": "10",
+            "country": "Nigeria"
+        }
+    }
+]
