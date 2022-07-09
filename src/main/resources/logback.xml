@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ <!--  https://mkyong.com/spring-mvc/spring-mvc-logback-slf4j-example/ -->
+      <property resource="file.properties"/>
+     <property name="LOG_PATH" value="D:/workspace-sts/service/logs" />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+        <Pattern>
+            %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+        </Pattern>
+        </layout>
+    </appender>
+     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/logs.log</file>
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <appender name="RollingFile-Appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/rollingfile.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_ARCHIVE}/rollingfile.log%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>50KB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="org.springframework" level="debug" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    
+    <logger name="com.external.dataservice" level="debug" additivity="false">
+        <appender-ref ref="RollingFile-Appender" />
+    </logger>
+      <logger name="com.internal" level="debug" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+       <!--    <logger name="guru.springframework.blog.logbackxml"  level="info" additivity="false">
+        <appender-ref ref="Console-Appender" />
+        <appender-ref ref="File-Appender" />
+        <appender-ref ref="Async-Appender" />
+    </logger>-->
+    <root>
+        <appender-ref ref="Console-Appender" />
+    </root>
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RollingFile-Appender" />
+    </root>
+
+</configuration>
